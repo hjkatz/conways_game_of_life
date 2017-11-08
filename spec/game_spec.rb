@@ -276,4 +276,25 @@ describe Game do
     end
   end
 
+  describe ".print" do
+    let :spinner_middle do
+      Game.new(5, 3, board: [
+          [false, false, false, false, false],
+          [false, true, true, true, false],
+          [false, false, false, false, false]
+      ])
+    end
+
+    it "prints the current game state to stdout" do
+      expected_output = <<-END_STDOUT
+0 0 0 0 0
+0 1 1 1 0
+0 0 0 0 0
+
+END_STDOUT
+
+      expect { spinner_middle.print } .to output(expected_output).to_stdout
+    end
+  end
+
 end
